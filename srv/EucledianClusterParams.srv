@@ -1,0 +1,8 @@
+float32 inlier_threshold
+int32 max_iters
+float32 leaf_size
+int32 min_cluster_size
+int32 max_cluster_size
+float32 cluster_tolerance
+---
+bool success

@@ -1,0 +1,4 @@
+float32 inlier_threshold
+int32 max_iters
+---
+bool success

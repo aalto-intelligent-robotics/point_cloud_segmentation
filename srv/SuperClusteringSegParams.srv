@@ -1,0 +1,12 @@
+float32 voxel_resolution
+float32 seed_resolution
+float32 color_importance
+float32 spatial_importance
+float32 normal_importance
+float32 threshold
+bool rgb_color_space
+bool convexity_criterion
+bool adapt_lambda
+bool equalization
+---
+bool success

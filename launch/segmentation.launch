@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+Copyright (c) Aalto  - All Rights Reserved
+Created on: 16/04/19
+    Author: Jens Lundell <jens.lundell@aalto.fi>
+   Details:
+-->
+<launch>
+  <arg name="pc_topic" default="/camera/depth_registered/points"/>
+  <arg name="camera_frame" default="camera_rgb_optical_frame"/>
+  <arg name="base_frame" default="camera_link"/>
+  <arg name="x_cutoff" default="[-1,1]"/>
+  <arg name="y_cutoff" default="[-0.2,0.2]"/>
+  <arg name="z_cutoff" default="[-0.25,0.1]"/>
+  <arg name="segmentation_algorithm" default="base"/>
+  <arg name="inlier_threshold" default="0.01"/>
+  <arg name="leaf_size" default="0.005"/>
+  <arg name="min_cluster_size" default="300"/>
+  <arg name="max_cluster_size" default="100000"/>
+  <arg name="cluster_tolerance" default="0.01"/>
+  <arg name="voxel_resolution" default="0.005"/>
+  <arg name="seed_resolution" default="0.1"/>
+  <arg name="color_importance" default="0.2"/>
+  <arg name="spatial_importance" default="0.4"/>
+  <arg name="normal_importance" default="1.0"/>
+  <arg name="curvature_threshold" default="1.0"/>
+  <arg name="smoothness_threshold" default="0.4"/>
+  <arg name="number_of_neighbours" default="80"/>
+  <arg name="threshold" value="0.5"/>
+  <arg name="rgb_color_space" value="false"/>
+  <arg name="convexity_criterion" value="true"/>
+  <arg name="adapt_lambda" value="false"/>
+  <arg name="equalization" value="false"/>
+  <node name="point_cloud_segmenation" type="main" pkg="point_cloud_segmentation" output="screen">
+    <param name="pc_topic" value="$(arg pc_topic)"/>
+    <param name="camera_frame" value="$(arg camera_frame)"/>
+    <param name="base_frame" value="$(arg base_frame)"/>
+    <rosparam param="x_cutoff" subst_value="True">$(arg x_cutoff)</rosparam>
+    <rosparam param="y_cutoff" subst_value="True">$(arg y_cutoff)</rosparam>
+    <rosparam param="z_cutoff" subst_value="True">$(arg z_cutoff)</rosparam>
+    <param name="segmentation_algorithm" value="$(arg segmentation_algorithm)"/>
+    <param name="inlier_threshold" value="$(arg inlier_threshold)"/>
+    <param name="leaf_size" value="$(arg leaf_size)"/>
+    <param name="min_cluster_size" value="$(arg min_cluster_size)"/>
+    <param name="max_cluster_size" value="$(arg max_cluster_size)"/>
+    <param name="cluster_tolerance" value="$(arg cluster_tolerance)"/>
+    <param name="voxel_resolution" value="$(arg voxel_resolution)"/>
+    <param name="seed_resolution" value="$(arg seed_resolution )"/>
+    <param name="color_importance" value="$(arg color_importance)"/>
+    <param name="spatial_importance" value="$(arg spatial_importance)"/>
+    <param name="normal_importance" value="$(arg normal_importance)"/>
+    <param name="curvature_threshold" value="$(arg curvature_threshold)"/>
+    <param name="smoothness_threshold" value="$(arg smoothness_threshold)"/>
+    <param name="number_of_neighbours" value="$(arg number_of_neighbours)"/>
+    <param name="threshold" value="$(arg threshold)"/>
+    <param name="rgb_color_space" value="$(arg rgb_color_space)"/>
+    <param name="convexity_criterion" value="$(arg convexity_criterion)"/>
+    <param name="adapt_lambda" value="$(arg adapt_lambda)"/>
+    <param name="equalization" value="$(arg equalization)"/>
+  </node>
+</launch>
